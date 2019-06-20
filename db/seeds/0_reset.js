@@ -1,8 +1,8 @@
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
     return Promise.all([
-      knex('points').del(),
-      knex('favourites').del(),
-      knex('maps').del(),
-      knex('users').del()
+        knex('points').del(),
+        knex('favourites').del(),
+        knex('maps').del(),
+        knex('users').del()
     ])
 }

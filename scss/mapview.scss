@@ -1,0 +1,18 @@
+
+main{
+  display: flex;
+  height: 37em;
+}
+.flex{
+  height: 100%;
+  width: 25%;
+}
+#points_container{
+  width: 90%;
+  background-color:fuchsia;
+}
+#map_view{
+  height: 100%;
+  width: 65%;
+  background-color: aquamarine;
+}
