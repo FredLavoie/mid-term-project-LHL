@@ -3,6 +3,7 @@ body {
 }
 
 main{
+  height: 33em;
   display: flex;
   justify-content: space-evenly;
 }
@@ -11,11 +12,13 @@ main{
   height: 100%;
   width: 28%;
 }
-
-#map_view{
-  height: 100%;
+#mapviewer{
   width: 68%;
-  background-color: aquamarine;
+}
+
+#map{
+  height: 100%;
+  width: 98%;
 }
 
 #points_container{
