@@ -63,6 +63,14 @@ app.get("/maps/:map_id", (req, res) => {
   res.render("map_view", templateVars);
 });
 
+//  new point page
+app.get("/points/new", (req, res) => {
+
+  console.log("get points", res);
+
+  res.render("add_point");
+});
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT)
