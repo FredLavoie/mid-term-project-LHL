@@ -20,26 +20,31 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   </nav>
+
   <main>
-    <div class="flex" style="overflow-y: auto;" >
-      <header>
-        <button type="button" class="btn btn-primary">Add Point</button>
-      </header>
-    <div id="points_container">
+    <div>
+      <input class="form-control form-control-lg" type="text" placeholder="Enter discovery list">
+      <small  class="form-text text-muted">Enter amazing points of interest!</small>
 
+    <div class="form-group">
+          <label for="Description">Example textarea</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
     </div>
-  </div>
+       
+     <input class="form-control form-control-lg" type="url" placeholder="URL of Photo">
 
-    <div id="map">
-
-    </div>
-
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmOjKnCb27NSuwCaY98GW-m0A9Rk9x9eE">
-    </script>
+    <form>
+          <div class="form-row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Latitude">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Longitude">
+            </div>
+          </div>
+    </form>
+    <button type="submit" class="btn btn-primary">Add Point</button>
+  </div> 
 
   </main>
-
-
 </body>
-</html>
