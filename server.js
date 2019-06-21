@@ -52,22 +52,22 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-
-//  page
+//  Map view page
 app.get("/maps/:map_id", (req, res) => {
-  console.log(res);
-  let templateVars = { };
+  let templateVars =  req.params;
   res.render("map_view", templateVars);
 });
 
-//  new point page
+//  New point page
 app.get("/points/new", (req, res) => {
-
-  console.log("get points", res);
-
+  // console.log("get points", res);
   res.render("add_point");
 });
 
+// Profile view page
+app.get("/users/:user_id", (req, res) => {
+  res.render("profile");
+});
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
