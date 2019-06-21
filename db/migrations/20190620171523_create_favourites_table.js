@@ -1,5 +1,5 @@
 
-export function up(knex, Promise) {
+exports.up = function (knex, Promise) {
   return knex.schema.createTable('favourites', function (table) {
     table.increments('id');
     table.integer('user_id').unsigned();
@@ -7,8 +7,8 @@ export function up(knex, Promise) {
     table.integer('map_id').unsigned();
     table.foreign('map_id').references('maps.id');
   });
-}
+};
 
-export function down(knex, Promise) {
+exports.down = function (knex, Promise) {
   return knex.schema.dropTable('favourites');
-}
+};

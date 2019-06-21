@@ -10,10 +10,8 @@ module.exports = (knex) => {
   router.get("/", (req, res) => {
     knex
       .select("*")
-      .from("users")
+      .from("points")
       .then((results) => {
-        console.log('The users table:' + results);
-
         res.json(results);
     });
   });
