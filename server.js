@@ -56,7 +56,11 @@ app.get("/", (req, res) => {
 //  page
 app.get("/maps/:map_id", (req, res) => {
 
-  res.render("map_view");
+  console.log(res);
+
+  let templateVars = { };
+
+  res.render("map_view", templateVars);
 });
 
 
