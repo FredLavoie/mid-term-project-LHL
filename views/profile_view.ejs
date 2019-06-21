@@ -5,48 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <!-- URL TITLE -->
-  <title>New Map - TBN</title>
+  <title>Profile- Wiki Map</title>
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/main.css">
     <!-- Script JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/add_point.js"></script>
 </head>
-
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Wiki Maps</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  </nav>
-
+    </nav>
   <main>
-      <form method="POST" action="/points">
-    <div class="point_form">
-      <input id="map-name" name="name"class="form-control form-control-lg" type="text" placeholder="Enter discovery list">
-      <small  class="form-text text-muted">Enter amazing points of interest!</small>
-
-    <div class="form-group">
-          <textarea name="about"class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+  <div id="menubar" class= "bar"> 
+    <div>
+      <li>Create Map</li>
+      <li>Profile</li>
     </div>
-   
-     <input name="photo"class="form-control form-control-lg" type="url" placeholder="URL of Photo">
-
-    
-          <div class="form-row">
-            <div class="col">
-              <input name="lat"type="text" class="form-control" placeholder="Latitude">
-            </div>
-            <div class="col">
-              <input name="lgt"type="text" class="form-control" placeholder="Longitude">
-            </div>
-          </div>
-    </form>
-    <button id= "add-point-submit"type="submit" class="btn btn-primary">Add Point</button>
-  </div> 
-
+  </div>
+  <div id="map_container" class="container" >
+    <span>Map name</span>
+  </div>
   </main>
+  <footer id="homefooter" class="footer">
+    <p>Incomplete footer</p>
+  </footer>
 </body>
+</html>

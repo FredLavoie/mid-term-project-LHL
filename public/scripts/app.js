@@ -70,7 +70,7 @@ function loadPoints(map){
 }
 
 // function to load map
-function initMap(data) {
+function initMap(data, map) {
 
   let center = centerOfMap(data);
 

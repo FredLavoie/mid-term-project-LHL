@@ -69,6 +69,16 @@ app.get("/users/:user_id", (req, res) => {
   res.render("profile");
 });
 
+
+app.post("/points", (req, res) => {
+  let pointName = req.body.name;
+  let pointAbout = req.body.about;
+  let pointImg = req.body.photo;
+  let pointLat  = req.body.lat;
+  let popintLgt = req.body.lgt;
+
+});
+
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
