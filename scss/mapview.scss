@@ -1,18 +1,25 @@
+body {
+  height: 100%;
+}
 
 main{
   display: flex;
-  height: 37em;
+  justify-content: space-evenly;
 }
+
 .flex{
   height: 100%;
-  width: 25%;
+  width: 28%;
 }
-#points_container{
-  width: 90%;
-  background-color:fuchsia;
-}
+
 #map_view{
   height: 100%;
-  width: 65%;
+  width: 68%;
   background-color: aquamarine;
 }
+
+#points_container{
+  width: 98%;
+  background-color:fuchsia;
+}
+
