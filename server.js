@@ -55,7 +55,6 @@ app.get("/", (req, res) => {
 
 //  page
 app.get("/maps/:map_id", (req, res) => {
-  console.log(res);
   let templateVars = { };
   res.render("map_view", templateVars);
 });
@@ -63,11 +62,23 @@ app.get("/maps/:map_id", (req, res) => {
 //  new point page
 app.get("/points/new", (req, res) => {
 
-  console.log("get points", res);
 
   res.render("add_point");
 });
 
+app.post("/points", (req, res) => {
+let pointName = req.body.name;
+let pointAbout = req.body.about;
+let pointImg = req.body.photo;
+let pointLat  = req.body.lat;
+let popintLgt = req.body.lgt;
+
+
+
+
+
+
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
