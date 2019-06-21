@@ -4,17 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (knex) => {
-
-  router.get("/", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json(results);
-      });
-  });
-  
-  router.get("/:id/favourites", (req, res) => {
+  router.get("/:id/f", (req, res) => {
     Promise.all([
       //   knex
       //     .select("users.id as userId", "favourites.map_id")
@@ -38,10 +28,9 @@ module.exports = (knex) => {
           favourites, contributions
         } 
         const templateVar = {userContribution: resultObj }
-        res.render("map_view", templateVar); //json
+        res.render("map_view", templateVar); //modify json
       });
   });
-  return router;
 
-  
+  return router;
 };
