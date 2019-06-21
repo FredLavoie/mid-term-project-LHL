@@ -28,7 +28,6 @@ app.use(
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const pointsRoutes = require("./routes/points");
-const favouritesRoutes = require("./routes/favourites");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -47,7 +46,6 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 app.use("/api/points", pointsRoutes(knex));
-app.use("/api/favourites", favouritesRoutes(knex));
 
 
 // Home page
@@ -64,6 +62,6 @@ app.get("/maps/:map_id", (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT)
+  console.log("Example app listening on port " + PORT);
 });
 

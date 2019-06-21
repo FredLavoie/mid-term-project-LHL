@@ -14,12 +14,9 @@ module.exports = (knex) => {
       });
   });
   
-  router.get("/:id/favourites", (req, res) => {
+  router.get("/:id/profile", (req, res) => {
     Promise.all([
-      //   knex
-      //     .select("users.id as userId", "favourites.map_id")
-      //     .from("users")
-      //     .innerJoin("favourites", "users.id", "favourites.user_id")
+
       knex
         .select("maps.id as mapId", "maps.title", "favourites.user_id")
         .from("maps")
@@ -30,16 +27,14 @@ module.exports = (knex) => {
         .from("maps")
         .innerJoin("points", "maps.id", "points.map_id")
         .where("points.creator_id", req.params.id)
-
     ])
       .then((results) => {
         const [favourites, contributions] = results;
         const resultObj = {
           favourites, contributions
-        } 
-        const templateVar = {userContribution: resultObj }
-        res.render("map_view", templateVar); //json
-      });
+        }; 
+        const templateVar = {userProfile: resultObj};
+        res.render("map_view", templateVar);
   });
   return router;
 
