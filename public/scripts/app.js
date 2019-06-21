@@ -2,6 +2,9 @@
 //*****************************************************************************/
 
 $(document).ready(function() {
+//url from window
+  let path = window.location.pathname;
+  console.log('This is the path in the URL: ' + path);
 
   loadPoints();
 
@@ -51,8 +54,6 @@ function createPointElement(point) {
 
 // fetch points from database (points table)
 function loadPoints(){
-  let path = window.location.pathname;
-  console.log('This is the path in the URL: ' + path);
   $.ajax({
     method: 'GET',
     url: '/api/points'
