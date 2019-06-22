@@ -1,0 +1,18 @@
+//imports
+@import "_navbar";
+
+body {
+  background-color: #EEE;
+
+  h1 {
+    color: #244751;
+  }
+}
+
+#menubar .bar {
+  background-color: bisque;
+}
+
+#map_container .container {
+  background-color: darkgray;
+}

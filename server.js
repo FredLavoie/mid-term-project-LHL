@@ -51,32 +51,31 @@ app.use("/maps", mapsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("homepage_view");
 });
 
-//  Map view page
+
+//  page
 app.get("/maps/:map_id", (req, res) => {
-  let templateVars =  req.params;
+  let templateVars = req.params;
   res.render("map_view", templateVars);
 });
 
-//  New point page
-app.get("/points/new", (req, res) => {
-  // console.log("get points", res);
+//  new point page
+app.get("/points/new", (req, res) => {  
   res.render("add_point");
 });
 
 
 
-
 app.post("/points", (req, res) => {
-  let pointName = req.body.name;
-  let pointAbout = req.body.about;
-  let pointImg = req.body.photo;
-  let pointLat  = req.body.lat;
-  let popintLgt = req.body.lgt;
+let pointName = req.body.name;
+let pointAbout = req.body.about;
+let pointImg = req.body.photo;
+let pointLat  = req.body.lat;
+let popintLgt = req.body.lgt;
 
-});
+})
 
 app.listen(PORT, () => {
   console.log("Wiki Maps listening on port " + PORT);
