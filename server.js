@@ -50,15 +50,17 @@ app.use("/maps", mapsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("homepage_view");
 });
 
-//  Map view page
+
+//  page
 app.get("/maps/:map_id", (req, res) => {
-  let templateVars =  req.params;
+  let templateVars = req.params;
   res.render("map_view", templateVars);
 });
 
+<<<<<<< HEAD
 //  New point page
 app.get("/maps/:map_id/points/new", (req, res) => {
   // console.log("get points", res);
@@ -100,8 +102,26 @@ app.post("/points", (req, res) => {
                 knex("points");
                 res.json(result);
             })
-
+=======
+//  new point page
+app.get("/points/new", (req, res) => {  
+  res.render("add_point");
 });
+
+// // Profile view page
+// app.get("/users/:user_id", (req, res) => {
+//   res.render("profile");
+// });
+
+app.post("/points", (req, res) => {
+let pointName = req.body.name;
+let pointAbout = req.body.about;
+let pointImg = req.body.photo;
+let pointLat  = req.body.lat;
+let popintLgt = req.body.lgt;
+>>>>>>> d6c91e4083f4e2d72a93570d715848e589ba8b26
+
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
