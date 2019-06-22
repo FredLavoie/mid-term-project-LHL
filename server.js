@@ -81,11 +81,6 @@ app.post("/maps/:mapId/points", (req, res) => {
   let pointLgt = req.body.lgt;
   let pointUserId = 1;
   let pointMapId = req.params.mapId;
-  console.log("POINT==>:", pointMapId);
-  console.log("Description:", pointAbout);
-  console.log("Image url:",pointImg);
-  console.log("Latitude:", pointLat);
-  console.log("Longitude", pointLgt);
 
   knex('points')
     .insert({title:pointName,
@@ -100,7 +95,6 @@ app.post("/maps/:mapId/points", (req, res) => {
       console.log('Added one new entry !');
       res.redirect("/maps/"+ pointMapId);
     });
-
 });
 
 app.listen(PORT, () => {
