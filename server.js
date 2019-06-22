@@ -8,6 +8,9 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sassMiddleware = require("node-sass-middleware");
 const app         = express();
+//
+var cookieParser = require('cookie-parser')
+app.use(cookieParser())
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -51,6 +54,20 @@ app.use("/maps", mapsRoutes(knex));
 // Home page
 app.get("/", (req, res) => {
   res.render("homepage_view");
+});
+
+// login page
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+// login post
+app.post("/login", (req, res) => {
+  console.log(req.body.username);
+  //res.cookies('user_id', req.body.username)
+  res.cookie('cookieName', req.body.username)
+  //res.redirect("/users/:user_id")
+  res.redirect("/")
 });
 
 
