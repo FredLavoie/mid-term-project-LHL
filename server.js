@@ -28,7 +28,7 @@ app.use(
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const pointsRoutes = require("./routes/points");
-
+const mapsRoutes = require("./routes/maps");
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 // The :status token will be colored red for server error codes, yellow for
@@ -47,6 +47,7 @@ app.use(express.static("public"));
 app.use("/users", usersRoutes(knex));
 app.use("/users/:user_id", usersRoutes(knex));
 app.use("/points", pointsRoutes(knex));
+app.use("/maps", mapsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
