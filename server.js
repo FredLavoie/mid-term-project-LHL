@@ -49,35 +49,31 @@ app.use("/points", pointsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("homepage_view");
 });
 
-//  Map view page
+
+//  page
 app.get("/maps/:map_id", (req, res) => {
-  let templateVars =  req.params;
+  let templateVars = { };
   res.render("map_view", templateVars);
 });
 
-//  New point page
+//  new point page
 app.get("/points/new", (req, res) => {
-  // console.log("get points", res);
+
+
   res.render("add_point");
 });
 
-// Profile view page
-app.get("/users/:user_id", (req, res) => {
-  res.render("profile");
-});
-
-
 app.post("/points", (req, res) => {
-  let pointName = req.body.name;
-  let pointAbout = req.body.about;
-  let pointImg = req.body.photo;
-  let pointLat  = req.body.lat;
-  let popintLgt = req.body.lgt;
+let pointName = req.body.name;
+let pointAbout = req.body.about;
+let pointImg = req.body.photo;
+let pointLat  = req.body.lat;
+let popintLgt = req.body.lgt;
 
-});
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
