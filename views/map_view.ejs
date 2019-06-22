@@ -15,8 +15,8 @@
 
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Wiki Maps</a>
+    <nav id="top-bar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a id="title-link" class="navbar-brand" href="/">Wiki Maps</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,7 +24,7 @@
     <main>
       <div class="flex" style="overflow-y: auto;">
         <header>
-          <a href="/maps/<%= map_id %>/points/new" type="button" class="btn btn-primary">Add Point</a>
+          <a href="/maps/<%= map_id %>/points/new" role="button" class="btn btn-primary btn-sm btn-block">Add Point</a>
         </header>
       <div id="points_container"></div>
       </div>

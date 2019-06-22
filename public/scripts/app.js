@@ -68,7 +68,7 @@ function loadPoints(mapNum){
 function initMap(data, mapNum) {
 
   let center = centerOfMap(data, mapNum);
-  console.log(center);
+  let zoom = renderZoom(data, mapNum, center);
 
   const map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
@@ -99,9 +99,31 @@ function centerOfMap(points, mapNum) {
 
   let avgLat = totalLat / counter;
   let avgLong = totalLong / counter;
-  console.log(avgLat);
-  console.log(avgLong);
 
   return ({lat: avgLat, lng: avgLong});
+}
+
+// function to find center of map based on average from points
+function renderZoom(points, mapNum, center) {
+  let distLat = 0;
+  let distLong = 0;
+  let counter = 0;
+
+  for (let point of points) {
+    if(point.map_id == mapNum) {
+      counter += 1;
+      distLat += (center.lat - point.latitude);
+      distLong += (center.lat - point.longitude);
+    }
+  }
+  let avgDistLat = distLat / counter;
+  let avgDistLong = distLong / counter;
+  let maxDist = Math.max(avgDistLat, avgDistLong);
+
+  switch(maxDist) {
+
+    case:
+  }
+
 }
 

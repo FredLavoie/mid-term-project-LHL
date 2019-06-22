@@ -14,26 +14,24 @@
   <script type="text/javascript" src="/scripts/homepage.js"></script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Wiki Maps</a>
+  <nav id="top-bar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a id="title-link" class="navbar-brand" href="/">Wiki Maps</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
   </nav>
   <main>
   <div id="menubar" class= "bar">
-    <div>
+    <div id="home-page-nav">
       <ul>
-      <li>Create Map</li>
-      <li>Profile</li>
+      <li><a id="create-map" class="btn btn-warning btn-sm btn-block" href="#">Create Map</a></li>
+      <li><a id="profile-link" class="btn btn-success btn-sm btn-block" href="#">Profile</a></li>
     </ul>
     </div>
   </div>
-  <div id="map_container" class="container" >
+  <div id="map_container" class="container">
   </div>
   </main>
-  <footer id="homefooter" class="footer">
-    <p>Incomplete footer</p>
-  </footer>
+
 </body>
 </html>

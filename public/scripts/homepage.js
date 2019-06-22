@@ -13,29 +13,26 @@ $(document).ready(function() {
 // append each point to points-container
 function renderMapName(mapNames) {
   for(let mapKey of mapNames) {
-    console.log("mapkey",mapKey);
-    
-    console.log('This is the map id for the point: ' + mapKey.title);;
+    // console.log("mapkey is: ", mapKey);
+    // console.log('This is the map id for the point: ' + mapKey.title);
+    let returnedPoint = createMapElement(mapKey.title, mapKey.id);
+    $('#map_container').prepend(returnedPoint);
 
-    
-
-      let returnedPoint = createMapElement(mapKey.title);
-      $('#map_container').prepend(returnedPoint);
-    
   }
 }
 
 // create HTML for points in sidebar
-function createMapElement(point) {
+function createMapElement(title, id) {
 
   // assign point information to variables
-  let title = point;
-  console.log("title", title)
-  
+  let titleOfMap = title;
+  let idOfMap = id;
+  // console.log("title", title);
+
+  // <a class="btn btn-primary" href="#" role="button">Link</a>
+
   // create all tags to be appended and assign the values where needed
-
-   let $button = $('<button>').attr('type', 'button').addClass('btn btn-primary btn-lg btn-block').text(title);
-
+  let $button = $('<a>').attr('href', `/maps/${idOfMap}`).attr('role', 'button').addClass('btn btn-primary btn-lg btn-block').text(titleOfMap);
 
   return $button;
 }
@@ -47,7 +44,7 @@ function loadMapName(map){
     url: '/maps'
   })
     .then(function (data) {
-      console.log(data)
+      // console.log(data);
       renderMapName(data, map);
     });
 }

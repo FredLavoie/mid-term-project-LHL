@@ -2,3 +2,20 @@
 @import "_navbar";
 @import "mapview";
 @import "profile";
+
+#top-bar {
+  margin-bottom: 2em;
+}
+
+#create-map {
+  margin: 0em 0em 1em 0em;
+}
+
+#home-page-nav li {
+  list-style-type: none;
+}
+
+#profile-link, #create-map {
+  width: 10em;
+}
+
