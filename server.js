@@ -97,7 +97,7 @@ app.post("/maps/:mapId/points", (req, res) => {
   let pointLat  = req.body.lat;
   let pointLgt = req.body.lgt;
   let pointUserId = 1;
-  let pointMapId = req.params;
+  let pointMapId = req.params.mapId;
   console.log("POINT==>:", pointMapId);
   console.log("Description:", pointAbout);
   console.log("Image url:",pointImg);
@@ -115,8 +115,7 @@ app.post("/maps/:mapId/points", (req, res) => {
     })
     .then(result => {
       console.log('Added one new entry !');
-      knex("points");
-      res.json(result);
+      res.redirect("/maps/"+ pointMapId);
     });
 
 });
