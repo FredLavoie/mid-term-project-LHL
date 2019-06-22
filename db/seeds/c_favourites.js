@@ -7,6 +7,7 @@ exports.seed = function (knex, Promise) {
         knex('favourites').insert({ user_id: "3", map_id: "1" }),
         knex('favourites').insert({ user_id: "1", map_id: "3" }),
         knex('favourites').insert({ user_id: "1", map_id: "2" }),
+        knex('favourites').insert({ user_id: "2", map_id: "2" }),
       ]);
     }),
   ]);
