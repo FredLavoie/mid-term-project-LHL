@@ -96,8 +96,9 @@ app.post("/maps/:mapId/points", (req, res) => {
   let pointImg = req.body.photo;
   let pointLat  = req.body.lat;
   let pointLgt = req.body.lgt;
-  let pointUserId = 1;
+  let pointUserId = req.cookies.cookieName;
   let pointMapId = req.params.mapId;
+  console.log("TESTING COOKIE!",pointUserId)
 
   knex('points')
     .insert({title:pointName,
