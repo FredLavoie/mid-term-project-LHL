@@ -56,6 +56,24 @@ app.get("/", (req, res) => {
   res.render("homepage_view");
 });
 
+// Create Map
+app.get("/maps/new", (req, res) => {
+  res.render("new_map");
+});
+
+// post Map
+app.post("/maps/new", (req, res) => {
+  let mapName = req.body.mapname;
+  let createId = req.cookies.cookieName;
+  knex('maps')
+    .insert({title:mapName, creator_id: createId})
+    .returning("id")
+    .then(function(id){
+      res.redirect(`/maps/${id}/points/new`);
+    })
+});
+
+
 // login page
 app.get("/login", (req, res) => {
   res.render("login");
