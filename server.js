@@ -98,7 +98,7 @@ app.post("/maps/:mapId/points", (req, res) => {
   let pointLgt = req.body.lgt;
   let pointUserId = req.cookies.cookieName;
   let pointMapId = req.params.mapId;
-  console.log("TESTING COOKIE!",pointUserId)
+  console.log("TESTING COOKIE #",pointUserId)
 
   knex('points')
     .insert({title:pointName,
@@ -111,7 +111,7 @@ app.post("/maps/:mapId/points", (req, res) => {
     })
     .then(result => {
       console.log('Added one new entry !');
-      res.redirect("/maps/"+ pointMapId);
+      res.redirect(`/maps/${pointUserId}`);
     });
 });
 
