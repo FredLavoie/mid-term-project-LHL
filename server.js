@@ -66,10 +66,7 @@ app.get("/points/new", (req, res) => {
   res.render("add_point");
 });
 
-// // Profile view page
-// app.get("/users/:user_id", (req, res) => {
-//   res.render("profile");
-// });
+
 
 
 app.post("/points", (req, res) => {
