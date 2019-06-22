@@ -31,7 +31,8 @@ const pointsRoutes = require("./routes/points");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+// The :status token will be colored red for server error codes, yellow for
+// client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 
 // Log knex SQL queries to STDOUT as well
@@ -44,8 +45,8 @@ app.use(express.static("public"));
 
 // Mount all resource routes
 app.use("/users", usersRoutes(knex));
+app.use("/users/:user_id", usersRoutes(knex));
 app.use("/points", pointsRoutes(knex));
-
 
 // Home page
 app.get("/", (req, res) => {
@@ -64,10 +65,10 @@ app.get("/points/new", (req, res) => {
   res.render("add_point");
 });
 
-// Profile view page
-app.get("/users/:user_id", (req, res) => {
-  res.render("profile");
-});
+// // Profile view page
+// app.get("/users/:user_id", (req, res) => {
+//   res.render("profile");
+// });
 
 
 app.post("/points", (req, res) => {
@@ -80,6 +81,6 @@ app.post("/points", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log("Wiki Maps listening on port " + PORT);
 });
 

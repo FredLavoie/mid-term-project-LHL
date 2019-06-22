@@ -1,0 +1,14 @@
+#profile_container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#favourites {
+  display:  flex;
+  flex-direction: column;
+}
+
+#contributions {
+  display:  flex;
+  flex-direction: column;
+}
