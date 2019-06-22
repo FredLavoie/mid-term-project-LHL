@@ -60,11 +60,11 @@ app.get("/maps/:map_id", (req, res) => {
   res.render("map_view", templateVars);
 });
 
-<<<<<<< HEAD
 //  New point page
 app.get("/maps/:map_id/points/new", (req, res) => {
   // console.log("get points", res);
-  res.render("add_point");
+  let templateVars = req.params;
+  res.render("add_point", templateVars);
 });
 
 // Profile view page
@@ -73,54 +73,26 @@ app.get("/users/:user_id", (req, res) => {
 });
 
 //Post form data
-app.post("/points", (req, res) => {
+app.post("/maps/:mapId/points", (req, res) => {
   let pointName = req.body.name;
-  console.log("Title:",pointName)
   let pointAbout = req.body.about;
   let pointImg = req.body.photo;
   let pointLat  = req.body.lat;
   let pointLgt = req.body.lgt;
   let pointUserId = 1;
-  let pointMapId = req.params;
-  console.log("POINT==>:", pointMapId);
-  console.log("Description:", pointAbout);
-  console.log("Image url:",pointImg);
-  console.log("Latitude:", pointLat);
-  console.log("Longitude", pointLgt);
+  let pointMapId = req.params.mapId;
 
-  knex('points')
-            .insert({title:pointName,
-                    latitude: pointLat,
-                    longitude: pointLgt,
-                    description: pointAbout,
-                    image: pointImg,
-                    creator_id: pointUserId,
-                    map_id: pointMapId 
-                  })
-            .then(result => {
-                console.log('Added one new entry !')
-                knex("points");
-                res.json(result);
-            })
-=======
-//  new point page
-app.get("/points/new", (req, res) => {  
-  res.render("add_point");
-});
 
-// // Profile view page
-// app.get("/users/:user_id", (req, res) => {
-//   res.render("profile");
-// });
-
-app.post("/points", (req, res) => {
-let pointName = req.body.name;
-let pointAbout = req.body.about;
-let pointImg = req.body.photo;
-let pointLat  = req.body.lat;
-let popintLgt = req.body.lgt;
->>>>>>> d6c91e4083f4e2d72a93570d715848e589ba8b26
-
+knex('points')
+  .insert({
+    title: pointName,
+    latitude: pointLat,
+    longitude: pointLgt,
+    description: pointAbout,
+    image: pointImg,
+    creator_id: pointUserId,
+    map_id: pointMapId
+  })
 })
 
 app.listen(PORT, () => {
