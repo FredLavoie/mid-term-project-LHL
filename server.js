@@ -63,7 +63,8 @@ app.get("/maps/:map_id", (req, res) => {
 //  New point page
 app.get("/maps/:map_id/points/new", (req, res) => {
   // console.log("get points", res);
-  res.render("add_point");
+  let templateVars = req.params;
+  res.render("add_point", templateVars);
 });
 
 // Profile view page
@@ -72,9 +73,8 @@ app.get("/users/:user_id", (req, res) => {
 });
 
 //Post form data
-app.post("/points", (req, res) => {
+app.post("/maps/:mapId/points", (req, res) => {
   let pointName = req.body.name;
-  console.log("Title:",pointName);
   let pointAbout = req.body.about;
   let pointImg = req.body.photo;
   let pointLat  = req.body.lat;
