@@ -33,8 +33,8 @@ module.exports = (knex) => {
         const resultObj = {
           favourites, contributions
         };
-        // res.render("profile", resultObj);
-        res.json(resultObj);
+        res.render("profile", resultObj);
+        // res.json(resultObj);
       });
   });
   return router;
