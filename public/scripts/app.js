@@ -28,22 +28,29 @@ function createPointElement(point) {
   let title = point.title;
   let description = point.description;
   let imageLink = point.image;
+  let point_id = point.id;
 
   // create all tags to be appended and assign the values where needed
-  let $article = $('<article>').addClass('TEMP');
-  let $header = $('<header>');
+  let $article = $('<article>').addClass('indiv_point');
+  let $header = $('<header>').addClass('flex_header');
+  let $edit = $('<button>').addClass('btn btn-primary btn-sm').text('Edit').attr('id', 'edit_button');
   let $title = $('<h5>').addClass('points_title').text(title);
   let $div = $('<div>').addClass('points_info');
   let $image = $('<img>').addClass('points_img').attr('src', imageLink);
   let $description = $('<p>').text(description);
+  let $form = $('<form>').attr('action', `/points/${point_id}/update`).attr('method', 'GET');
 
   // append all tags in reverse order (starting with furthest nested tags)
+  $form
+    .append($edit);
+
   $div
     .append($description)
     .append($image);
 
   $header
-    .append($title);
+    .append($title)
+    .append($form);
 
   $article
     .append($header)
@@ -70,7 +77,7 @@ function initMap(data, mapNum) {
   let center = centerOfMap(data, mapNum);
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
+    zoom: 10,
     center: center
   });
   for (let point of data) {
