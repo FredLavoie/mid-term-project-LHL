@@ -23,29 +23,29 @@
   </nav>
 
   <main>
-      <form method="POST" action="/points/:point_id/update">
-    <div class="point_form">
-      <input id="map-name" name="name"class="form-control form-control-lg" type="text" value="<%= title %>">
-      <small  class="form-text text-muted">Enter amazing points of interest!</small>
+    <form method="POST" action="/points/:point_id/update">
+      <div class="point_form">
+        <input id="map-name" name="name"class="form-control form-control-lg" type="text" value="<%= title %>">
+        <small  class="form-text text-muted">Enter amazing points of interest!</small>
 
-    <div class="form-group">
+        <div class="form-group">
           <textarea name="about"class="form-control" id="exampleFormControlTextarea1" rows="5"><%= description %></textarea>
-    </div>
+        </div>
 
-     <input name="photo"class="form-control form-control-lg" type="url" value="<%= image %>">
+        <input name="photo"class="form-control form-control-lg" type="url" value="<%= image %>">
 
-
-          <div class="form-row">
-            <div class="col">
-              <input name="lat"type="text" class="form-control" value="<%= latitude %>">
-            </div>
-            <div class="col">
-              <input name="lgt"type="text" class="form-control" value="<%= longitude %>">
-            </div>
+        <div class="form-row">
+          <div class="col">
+            <input name="lat"type="text" class="form-control" value="<%= latitude %>">
           </div>
+          <div class="col">
+            <input name="lgt"type="text" class="form-control" value="<%= longitude %>">
+          </div>
+        </div>
+      </div>
     </form>
+
     <button id= "add-point-submit"type="submit" class="btn btn-primary">Update Point</button>
-  </div>
 
   </main>
 </body>

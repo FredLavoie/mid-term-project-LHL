@@ -9,8 +9,8 @@ const bodyParser  = require("body-parser");
 const sassMiddleware = require("node-sass-middleware");
 const app         = express();
 //
-var cookieParser = require('cookie-parser')
-app.use(cookieParser())
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -71,25 +71,25 @@ app.post("/maps/new", (req, res) => {
     .returning("id")
     .then(function(id){
       res.redirect(`/maps/${id}/points/new`);
-    })
+    });
 });
 
-// //Get update points
-// app.get("/points/:point_id/update",(req, res) => {
-//   let templateVars = {
-//     title: req.body.name,
-//     description: req.body.about,
-//     image: req.body.photo,
-//     lat: req.body.lat,
-//     long: req.body.lgt,
-//   };
-//   console.log("TEMPLATEVARS FOR UPDATE POINTS:", templateVars);
-//   res.render("update_point", templateVars);
-// });
+//Get update points
+app.get("/points/:point_id/update",(req, res) => {
+  let templateVars = {
+    title: req.body.name,
+    description: req.body.about,
+    image: req.body.photo,
+    lat: req.body.lat,
+    long: req.body.lgt,
+  };
+  console.log("TEMPLATEVARS FOR UPDATE POINTS:", templateVars);
+  res.render("update_point", templateVars);
+});
 
-//update points
+// update points
 app.post("/points/:point_id/update", (req, res) => {
-  console.log(req.body.name)
+  console.log(req.body.name);
   let templateVars = {
     title: req.body.name,
     description: req.body.about,
@@ -143,7 +143,7 @@ app.post("/maps/:mapId/points", (req, res) => {
   let pointLgt = req.body.lgt;
   let pointUserId = req.cookies.cookieName;
   let pointMapId = req.params.mapId;
-  console.log("TESTING COOKIE #",pointUserId)
+  console.log("TESTING COOKIE #",pointUserId);
 
   knex('points')
     .insert({title:pointName,

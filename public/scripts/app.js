@@ -77,7 +77,7 @@ function initMap(data, mapNum) {
   let center = centerOfMap(data, mapNum);
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
+    zoom: 10,
     center: center
   });
   for (let point of data) {
