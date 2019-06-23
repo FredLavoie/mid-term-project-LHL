@@ -23,6 +23,7 @@ module.exports = (knex) => {
     ])
       .then((results) => {
         let obj = results[0][0];
+        // console.log(obj);
 
         res.render("update_point", obj);
         // res.json(obj);
