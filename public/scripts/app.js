@@ -44,17 +44,17 @@ function createPointElement(point) {
   $form
     .append($edit);
 
-  $div
-    .append($description)
-    .append($image);
-
   $header
-    .append($title)
+  .append($title);
+
+  $div
+    .append($header)
+    .append($description)
     .append($form);
 
   $article
-    .append($header)
-    .append($div);
+    .append($div)
+    .append($image);
 
   return $article;
 }
