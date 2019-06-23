@@ -45,7 +45,7 @@ function createPointElement(point) {
     .append($edit);
 
   $header
-  .append($title);
+    .append($title);
 
   $div
     .append($header)
