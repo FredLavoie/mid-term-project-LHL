@@ -53,7 +53,8 @@ app.use("/maps", mapsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  res.render("homepage_view");
+  let templateVars = req.cookies.cookieName;
+  res.render("homepage_view", templateVars);
 });
 
 // Create Map
@@ -130,7 +131,14 @@ app.get("/maps/:map_id/points/new", (req, res) => {
 
 // Profile view page
 app.get("/users/:user_id", (req, res) => {
-  res.render("profile");
+  
+  if(req.cookies.cookieName){
+
+    res.redirect(`/users/${eq.cookies.cookieName}`)
+  }
+  else{
+    res.redirect("/login")
+  }
 });
 
 //Post form data
