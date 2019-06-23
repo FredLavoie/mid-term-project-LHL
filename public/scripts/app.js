@@ -120,10 +120,10 @@ function renderZoom(points, mapNum, center) {
   let avgDistLong = distLong / counter;
   let maxDist = Math.max(avgDistLat, avgDistLong);
 
-  switch(maxDist) {
+  // switch(maxDist) {
 
-    case:
-  }
+  //   case:
+  // }
 
 }
 

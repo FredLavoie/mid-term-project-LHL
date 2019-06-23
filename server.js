@@ -73,6 +73,32 @@ app.post("/maps/new", (req, res) => {
     })
 });
 
+//Get update points
+app.get("/points/:point_id/update",(req, res) => {
+  let templateVars = {
+    title: req.body.name,
+    description: req.body.about,
+    image: req.body.photo,
+    lat: req.body.lat,
+    long: req.body.lgt,
+  };
+  console.log("TEMPLATEVARS FOR UPDATE POINTS:", templateVars);
+  res.render("update_point", templateVars);
+});
+
+//update points
+app.post("/points/:point_id/update", (req, res) => {
+  console.log(req.body.name)
+  let templateVars = {
+    title: req.body.name,
+    description: req.body.about,
+    image: req.body.photo,
+    lat: req.body.lat,
+    long: req.body.lgt,
+  };
+  console.log("TEMPLATEVARS FOR UPDATE POINTS:", templateVars);
+  res.render("update_point", templateVars);
+});
 
 // login page
 app.get("/login", (req, res) => {

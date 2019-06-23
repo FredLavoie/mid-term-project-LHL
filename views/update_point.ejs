@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="/styles/main.css">
     <!-- Script JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/add_point.js"></script>
 </head>
 
 <body>
@@ -24,24 +22,24 @@
   </nav>
 
   <main>
-      <form method="POST" action="/points/update">
+      <form method="POST" action="/points/:point_id/update">
     <div class="point_form">
-      <input id="map-name" name="name"class="form-control form-control-lg" type="text" placeholder="Enter discovery list">
+      <input id="map-name" name="name"class="form-control form-control-lg" type="text" value="<%= title %>">
       <small  class="form-text text-muted">Enter amazing points of interest!</small>
 
     <div class="form-group">
-          <textarea name="about"class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+          <textarea name="about"class="form-control" id="exampleFormControlTextarea1" rows="5" value="<%= description %>"></textarea>
     </div>
 
-     <input name="photo"class="form-control form-control-lg" type="url" placeholder="URL of Photo">
+     <input name="photo"class="form-control form-control-lg" type="url" value="<%= image %>">
 
 
           <div class="form-row">
             <div class="col">
-              <input name="lat"type="text" class="form-control" placeholder="Latitude">
+              <input name="lat"type="text" class="form-control" value="<%= lat %>">
             </div>
             <div class="col">
-              <input name="lgt"type="text" class="form-control" placeholder="Longitude">
+              <input name="lgt"type="text" class="form-control" value="<%= long %>">
             </div>
           </div>
     </form>
