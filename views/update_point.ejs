@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <!-- URL TITLE -->
-  <title>New Map - TBN</title>
+  <title>Update Point</title>
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="/styles/main.css">
     <!-- Script JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/edit_point.js"></script>
 </head>
 
 <body>
@@ -28,7 +29,7 @@
       <small  class="form-text text-muted">Enter amazing points of interest!</small>
 
     <div class="form-group">
-          <textarea name="about"class="form-control" id="exampleFormControlTextarea1" rows="5" value="<%= description %>"></textarea>
+          <textarea name="about"class="form-control" id="exampleFormControlTextarea1" rows="5"><%= description %></textarea>
     </div>
 
      <input name="photo"class="form-control form-control-lg" type="url" value="<%= image %>">
@@ -36,10 +37,10 @@
 
           <div class="form-row">
             <div class="col">
-              <input name="lat"type="text" class="form-control" value="<%= lat %>">
+              <input name="lat"type="text" class="form-control" value="<%= latitude %>">
             </div>
             <div class="col">
-              <input name="lgt"type="text" class="form-control" value="<%= long %>">
+              <input name="lgt"type="text" class="form-control" value="<%= longitude %>">
             </div>
           </div>
     </form>

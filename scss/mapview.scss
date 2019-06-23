@@ -25,7 +25,28 @@ main{
 }
 
 #points_container{
-  width: 98%;
-  background-color:fuchsia;
+  width: 100%;
+  margin: 0.2em;
+  // background-color: lightblue;
+}
+
+.points_img {
+  width: 60px;
+}
+
+#edit_button {
+  width: 3.2em;
+  text-align: center;
+}
+
+.flex_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.indiv_point {
+  border: solid 0.06em rgb(95, 94, 94);
+  border-radius: 0.1em;
+  margin: 0.2em;
 }
 
