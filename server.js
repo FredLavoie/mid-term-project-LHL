@@ -1,4 +1,6 @@
 "use strict";
+//******************************** VARIABLES / REQUIRE ********************************/
+//*************************************************************************************/
 
 require('dotenv').config();
 
@@ -8,7 +10,7 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sassMiddleware = require("node-sass-middleware");
 const app         = express();
-//
+
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
@@ -28,6 +30,9 @@ app.use(
   })
 );
 
+//********************************* EXTERNAL ROUTES ***********************************/
+//*************************************************************************************/
+
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 const pointsRoutes = require("./routes/points");
@@ -44,7 +49,6 @@ app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(express.static("public"));
 
 // Mount all resource routes
@@ -52,17 +56,58 @@ app.use("/users", usersRoutes(knex));
 app.use("/points", pointsRoutes(knex));
 app.use("/maps", mapsRoutes(knex));
 
-// Home page
+//*********************************** GET REQUETS *************************************/
+//*************************************************************************************/
+
+// [HOME] page
 app.get("/", (req, res) => {
   res.render("homepage_view");
 });
 
-// Create Map
+// [CREATE MAP] Create Map
 app.get("/maps/new", (req, res) => {
   res.render("new_map");
 });
 
-// Post new map
+// [LOGIN] login page
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+
+//  [SHOW MAP] Show map page
+app.get("/maps/:map_id", (req, res) => {
+  let templateVars = req.params;
+  res.render("map_view", templateVars);
+});
+
+//  [CREATE POINT] New point page
+app.get("/maps/:map_id/points/new", (req, res) => {
+  let templateVars = req.params;
+  console.log(templateVars);
+
+  res.render("add_point", templateVars);
+});
+
+// [PROFILE] Profile view page
+app.get("/users/:user_id", (req, res) => {
+  if(req.cookies.cookieName){
+    res.redirect(`/users/${req.cookies.cookieName}`);
+  } else {
+    res.redirect("/login");
+  }
+});
+
+//********************************** POST REQUETS *************************************/
+//*************************************************************************************/
+
+// [LOGIN] login post
+app.post("/login", (req, res) => {
+  console.log(req.body.username);
+  res.cookie('cookieName', req.body.username);
+  res.redirect("/");
+});
+
+// [NEW MAP] Post new map
 app.post("/maps/new", (req, res) => {
   let mapName = req.body.mapname;
   let createId = req.cookies.cookieName;
@@ -74,75 +119,34 @@ app.post("/maps/new", (req, res) => {
     });
 });
 
-//Get update points
-app.get("/points/:point_id/update",(req, res) => {
-  let templateVars = {
-    title: req.body.name,
-    description: req.body.about,
-    image: req.body.photo,
-    lat: req.body.lat,
-    long: req.body.lgt,
-  };
-  console.log("TEMPLATEVARS FOR UPDATE POINTS:", templateVars);
-  res.render("update_point", templateVars);
-});
-
-// update points
+// [UPDATE POINT] update points
 app.post("/points/:point_id/update", (req, res) => {
-  console.log(req.body.name);
-  let templateVars = {
-    title: req.body.name,
-    description: req.body.about,
-    image: req.body.photo,
-    lat: req.body.lat,
-    long: req.body.lgt,
-  };
-  console.log("TEMPLATEVARS FOR UPDATE POINTS:", templateVars);
-  res.render("update_point", templateVars);
+
+  let title = req.body.title;
+  let description = req.body.description;
+  let image = req.body.photo;
+  let lat = req.body.latitude;
+  let long = req.body.longitude;
+  let map_id = '';
+
+  knex('points')
+    .select('points.map_id')
+    .from('points')
+    .where('points.id', req.params.point_id)
+    .then(function(data) {
+      map_id = data[0].map_id;
+    });
+
+  knex('points')
+    .where({ id: req.params.point_id })
+    .update({title: title, longitude: long, latitude: lat, description: description, image: image})
+    .then(function() {
+      res.redirect(`/maps/${map_id}`);
+    });
+
 });
 
-// login page
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-
-// login post
-app.post("/login", (req, res) => {
-  console.log(req.body.username);
-  //res.cookies('user_id', req.body.username)
-  res.cookie('cookieName', req.body.username);
-  //res.redirect("/users/:user_id")
-  res.redirect("/");
-});
-
-
-//  Show map page
-app.get("/maps/:map_id", (req, res) => {
-  let templateVars = req.params;
-  res.render("map_view", templateVars);
-});
-
-//  New point page
-app.get("/maps/:map_id/points/new", (req, res) => {
-  let templateVars = req.params;
-  console.log(templateVars);
-
-  res.render("add_point", templateVars);
-});
-
-// Profile view page
-app.get("/users/:user_id", (req, res) => {
-
-  if(req.cookies.cookieName){
-
-    res.redirect(`/users/${eq.cookies.cookieName}`)
-  }
-  else{
-    res.redirect("/login");
-  }
-});
-
-//Post form data
+// [NEW POINT] Post form data
 app.post("/maps/:mapId/points", (req, res) => {
   let pointName = req.body.name;
   let pointAbout = req.body.about;
@@ -151,7 +155,6 @@ app.post("/maps/:mapId/points", (req, res) => {
   let pointLgt = req.body.lgt;
   let pointUserId = req.cookies.cookieName;
   let pointMapId = req.params.mapId;
-  console.log("TESTING COOKIE #",pointUserId);
 
   knex('points')
     .insert({title:pointName,
@@ -162,11 +165,13 @@ app.post("/maps/:mapId/points", (req, res) => {
       creator_id: pointUserId,
       map_id: pointMapId
     })
-    .then(result => {
-      console.log('Added one new entry !');
+    .then(function() {
       res.redirect(`/maps/${pointMapId}`);
     });
 });
+
+//********************************* PORT LISTENING ************************************/
+//*************************************************************************************/
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

@@ -9,33 +9,36 @@ main{
 }
 
 .flex{
+  flex-direction: column;
   height: 100%;
-  width: 28%;
+  width: 50%;
 }
-.flex button{
-  width: 98%;
-}
-#mapviewer{
-  width: 68%;
+#addbutton{
+  position: sticky;
+  width: 95%;
 }
 
 #map{
   height: 100%;
-  width: 98%;
+  width: 45%;
 }
 
 #points_container{
-  width: 100%;
+  width: 95%;
   margin: 0.2em;
+  height: 3em;
   // background-color: lightblue;
 }
 
 .points_img {
-  width: 60px;
+
+  height: 100%;
+  width: 200px;
 }
 
-#edit_button {
-  width: 3.2em;
+#edit_button { 
+  justify-content: flex-end;
+  width: 100%;
   text-align: center;
 }
 
@@ -45,8 +48,18 @@ main{
 }
 
 .indiv_point {
+  display: flex;
+  justify-content: space-between;
   border: solid 0.06em rgb(95, 94, 94);
   border-radius: 0.1em;
   margin: 0.2em;
+  height: 10rem;
+}
+.points_info{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
 }
 

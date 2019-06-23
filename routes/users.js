@@ -32,6 +32,7 @@ module.exports = (knex) => {
         const resultObj = {
           favourites, contributions
         };
+
         res.render("profile", resultObj);
         // res.json(resultObj);
       });
