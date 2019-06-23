@@ -54,8 +54,7 @@ app.use("/maps", mapsRoutes(knex));
 
 // Home page
 app.get("/", (req, res) => {
-  let templateVars = req.cookies.cookieName;
-  res.render("homepage_view", templateVars);
+  res.render("homepage_view");
 });
 
 // Create Map
@@ -125,20 +124,21 @@ app.get("/maps/:map_id", (req, res) => {
 
 //  New point page
 app.get("/maps/:map_id/points/new", (req, res) => {
-  // console.log("get points", res);
   let templateVars = req.params;
+  console.log(templateVars);
+
   res.render("add_point", templateVars);
 });
 
 // Profile view page
 app.get("/users/:user_id", (req, res) => {
-  
+
   if(req.cookies.cookieName){
 
     res.redirect(`/users/${eq.cookies.cookieName}`)
   }
   else{
-    res.redirect("/login")
+    res.redirect("/login");
   }
 });
 
@@ -164,7 +164,7 @@ app.post("/maps/:mapId/points", (req, res) => {
     })
     .then(result => {
       console.log('Added one new entry !');
-      res.redirect(`/maps/${pointUserId}`);
+      res.redirect(`/maps/${pointMapId}`);
     });
 });
 
