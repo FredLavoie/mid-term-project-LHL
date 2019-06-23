@@ -8,10 +8,9 @@ $(document).ready(function() {
 
 });
 
-//****************************** FAVOURITES ***********************************/
+//****************************** LOAD POINT ***********************************/
 //*****************************************************************************/
 
-// fetch favourites from database (favourites table)
 function loadPointToEdit(userNum){
 
   $.ajax({
