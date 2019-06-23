@@ -32,8 +32,21 @@ function createMapElement(title, id) {
   // <a class="btn btn-primary" href="#" role="button">Link</a>
 
   // create all tags to be appended and assign the values where needed
-  let $button = $('<a>').attr('href', `/maps/${idOfMap}`).attr('role', 'button').addClass('btn btn-primary btn-lg btn-block').text(titleOfMap);
+  let $button = $('<a>').attr('href', `/maps/${idOfMap}`).attr('role', 'button')
+  .addClass('btn btn-primary btn-lg btn-block').text(titleOfMap);
 
+  //favorite button
+  let $favorite = $('<div>').addClass('flexbox')
+  let $favoriteButton = $('<div>').addClass('fav-btn')
+  let $favoriteSpan = $('<span>').attr('href','').addClass("favme dashicons dashicons-heart")
+
+  $favorite
+    .append($favoriteButton)
+    .append($favoriteSpan)
+
+  $button
+    .append($favorite)
+    
   return $button;
 }
 
