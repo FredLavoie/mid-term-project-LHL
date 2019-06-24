@@ -28,7 +28,7 @@
         <h3>My Favourite Maps</h3>
         <ul>
           <% favourites.forEach(function(item) { %>
-            <li><a href="/maps/<%=item.mapId%>"><%= item.title %></a></li>
+            <li><h5><a href="/maps/<%=item.mapId%>"><%= item.title %></a></h5></li>
           <% }); %>
         </ul>
       </div>
@@ -37,7 +37,7 @@
         <h3>Maps I Contributed To</h3>
         <ul>
           <% contributions.forEach(function(item) { %>
-            <li><a href="/maps/<%=item.mapId%>"><%= item.title %> / <%= item.pointTitle %></a></li>
+            <li><h5><a href="/maps/<%=item.mapId%>"><%= item.title %> / <%= item.pointTitle %></a></h5></li>
           <% }); %>
         </ul>
       </div>

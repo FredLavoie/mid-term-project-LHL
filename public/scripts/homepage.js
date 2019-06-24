@@ -36,12 +36,12 @@ function createMapElement(title, id) {
   // create all tags to be appended and assign the values where needed
   let $article = $('<article>').addClass('mapFav');
   let $button = $('<a>').attr('href', `/maps/${idOfMap}`).attr('role', 'button')
-    .addClass('btn btn-primary btn-lg btn-block').attr('id','mapTitle').text(titleOfMap);
+    .addClass('btn btn-outline-dark').attr('id','mapTitle').text(titleOfMap);
   let $favButton = $('<button>').attr('type', 'submit').addClass('btn btn-outline-secondary');
   let $addSpan = $('<span>');
   let $form = $('<form>').attr('method', 'POST').attr('action', `/maps/${idOfMap}/favourites/new`);
 
-  $favButton.append($addSpan).text('Favourite');
+  $favButton.append($addSpan).text('Favourite').html('<i class="fas fa-heart"></i>');
 
   $form.append($favButton);
 
@@ -66,5 +66,3 @@ function loadMapName(map){
       renderMapName(data, map);
     });
 }
-
-

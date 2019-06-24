@@ -33,8 +33,8 @@ function createPointElement(point) {
   // create all tags to be appended and assign the values where needed
   let $article = $('<article>').addClass('indiv_point');
   let $header = $('<header>').addClass('flex_header');
-  let $edit = $('<button>').addClass('btn btn-primary btn-sm').text('Edit').attr('id', 'edit_button');
-  let $title = $('<h5>').addClass('points_title').text(title);
+  let $edit = $('<button>').addClass('btn btn-secondary').text('Edit').attr('id', 'edit_button');
+  let $title = $('<h4>').addClass('points_title').text(title);
   let $div = $('<div>').addClass('points_info');
   let $image = $('<img>').addClass('points_img').attr('src', imageLink);
   let $description = $('<p>').text(description);
@@ -111,5 +111,3 @@ function centerOfMap(points, mapNum) {
 
   return ({lat: avgLat, lng: avgLong});
 }
-
-

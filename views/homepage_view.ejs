@@ -8,6 +8,7 @@
   <title>Profile- Wiki Map</title>
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/82fc8bac5a.js"></script>
   <link rel="stylesheet" href="/styles/main.css">
     <!-- Script JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -24,11 +25,11 @@
   <div id="menubar" class= "bar">
     <div id="home-page-nav">
       <ul>
-      <li><a href="/maps/new" id="create-map" class="btn btn-warning btn-sm btn-block">Create Map</a></li>
+      <li><a href="/maps/new" id="create-map" class="btn btn-secondary">Create Map </a></li>
         <% if (cookie) { %>
-      <li><a href="/users/<%= cookie %>" id="create-map" class="btn btn-warning btn-sm btn-block">Profile</a></li>
+      <li><a href="/users/<%= cookie %>" id="create-map" class="btn btn-secondary">Profile</a></li>
       <% } else { %>
-        <li><a href="/login" id="create-map" class="btn btn-warning btn-sm btn-block">Login</a></li>
+        <li><a href="/login" id="create-map" class="btn btn-secondary">Login</a></li>
       <% } %>
 
     </ul>
