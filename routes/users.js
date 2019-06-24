@@ -25,12 +25,16 @@ module.exports = (knex) => {
         .select("maps.id as mapId", "maps.title", "points.creator_id as userId", "points.title as pointTitle")
         .from("maps")
         .innerJoin("points", "maps.id", "points.map_id")
-        .where("points.creator_id", req.params.id)
+        .where("points.creator_id", req.params.id),
+      knex
+        .select("*")
+        .from("users")
+        .where("users.id", req.params.id)
     ])
       .then((results) => {
-        const [favourites, contributions] = results;
+        const [favourites, contributions, users] = results;
         const resultObj = {
-          favourites, contributions
+          favourites, contributions, users
         };
 
         res.render("profile", resultObj);
