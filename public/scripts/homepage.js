@@ -32,22 +32,23 @@ function createMapElement(title, id) {
   // <a class="btn btn-primary" href="#" role="button">Link</a>
 
   // create all tags to be appended and assign the values where needed
+  let $article = $('<article>').addClass('mapFav');
   let $button = $('<a>').attr('href', `/maps/${idOfMap}`).attr('role', 'button')
-  .addClass('btn btn-primary btn-lg btn-block').text(titleOfMap);
+  .addClass('btn btn-primary btn-lg btn-block').attr('id','mapTitle').text(titleOfMap);
 
-  //favorite button
-  let $favorite = $('<div>').addClass('flexbox')
-  let $favoriteButton = $('<div>').addClass('fav-btn')
-  let $favoriteSpan = $('<span>').attr('href','').addClass("favme dashicons dashicons-heart")
+  let $favButton = $('<button>').attr('type', 'button').addClass('btn btn-default btn-sm');
+  let $addSpan = $('<span>').addClass("glyphicon glyphicon-star")
+  
+  $favButton.append($addSpan).text('Favourite');
 
-  $favorite
-    .append($favoriteButton)
-    .append($favoriteSpan)
+  $article
+        .append($button)
+        .append($favButton);
 
-  $button
-    .append($favorite)
+  //<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star"></span> Favorite</button>
+
     
-  return $button;
+  return $article;
 }
 
 // fetch points from database (points table)

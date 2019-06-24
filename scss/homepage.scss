@@ -1,7 +1,22 @@
 #menubar{
-  background-color: aquamarine;
-  width: 37%;
+  width: 20%;
 }
+
 #map_container{
-width: 55%;
+width: 78%;
+display: flex;
+flex-direction: column;
+align-content: center;
+}
+
+.mapFav {
+	display: flex;
+	justify-content: space-evenly;
+	margin: 1em 0em 1em 0em;
+
+}
+
+#mapTitle {
+	width: 80%;
+
 }
