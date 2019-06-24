@@ -24,8 +24,13 @@
   <div id="menubar" class= "bar">
     <div id="home-page-nav">
       <ul>
-      <li><a href="/maps/new" id="create-map" class="btn btn-warning btn-sm btn-block" href="#">Create Map</a></li>
-      <li><a href="/login" id="create-map" class="btn btn-warning btn-sm btn-block" href="#">login</a></li>
+      <li><a href="/maps/new" id="create-map" class="btn btn-warning btn-sm btn-block">Create Map</a></li>
+        <% if (cookie) { %>
+      <li><a href="/users/<%= cookie %>" id="create-map" class="btn btn-warning btn-sm btn-block">Profile</a></li>
+      <% } else { %>
+        <li><a href="/login" id="create-map" class="btn btn-warning btn-sm btn-block">Login</a></li>
+      <% } %>
+
     </ul>
 
     </div>

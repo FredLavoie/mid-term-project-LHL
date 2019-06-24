@@ -15,19 +15,23 @@ module.exports = (knex) => {
   });
 
   router.get("/:point_id/update", (req, res) => {
-    Promise.all([
-      knex
-        .select("*")
-        .from("points")
-        .where("points.id", req.params.point_id),
-    ])
-      .then((results) => {
-        let obj = results[0][0];
-        // console.log(obj);
+    if(req.cookies.cookieName){
+      Promise.all([
+        knex
+          .select("*")
+          .from("points")
+          .where("points.id", req.params.point_id),
+      ])
+        .then((results) => {
+          let obj = results[0][0];
+          // console.log(obj);
 
-        res.render("update_point", obj);
+          res.render("update_point", obj);
         // res.json(obj);
-      });
+        });
+    } else {
+      res.redirect("/login");
+    }
   });
 
   return router;

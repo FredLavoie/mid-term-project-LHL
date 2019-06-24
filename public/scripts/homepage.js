@@ -37,8 +37,8 @@ function createMapElement(title, id) {
   let $article = $('<article>').addClass('mapFav');
   let $button = $('<a>').attr('href', `/maps/${idOfMap}`).attr('role', 'button')
     .addClass('btn btn-primary btn-lg btn-block').attr('id','mapTitle').text(titleOfMap);
-  let $favButton = $('<button>').attr('type', 'submit').addClass('btn btn-default');
-  let $addSpan = $('<span>').addClass("glyphicon glyphicon-heart");
+  let $favButton = $('<button>').attr('type', 'submit').addClass('btn btn-outline-secondary');
+  let $addSpan = $('<span>');
   let $form = $('<form>').attr('method', 'POST').attr('action', `/maps/${idOfMap}/favourites/new`);
 
   $favButton.append($addSpan).text('Favourite');

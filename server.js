@@ -64,12 +64,17 @@ app.use("/favourites", favouritesRoutes(knex));
 
 // [HOME] page
 app.get("/", (req, res) => {
-  res.render("homepage_view");
+  let userId = {cookie: req.cookies.cookieName};
+  res.render("homepage_view", userId);
 });
 
 // [CREATE MAP] Create Map
 app.get("/maps/new", (req, res) => {
-  res.render("new_map");
+  if(req.cookies.cookieName){
+    res.render("new_map");
+  } else {
+    res.redirect("/login");
+  }
 });
 
 // [LOGIN] login page
@@ -85,10 +90,12 @@ app.get("/maps/:map_id", (req, res) => {
 
 //  [CREATE POINT] New point page
 app.get("/maps/:map_id/points/new", (req, res) => {
-  let templateVars = req.params;
-  console.log(templateVars);
-
-  res.render("add_point", templateVars);
+  if(req.cookies.cookieName){
+    let templateVars = req.params;
+    res.render("add_point", templateVars);
+  } else {
+    res.redirect("/login");
+  }
 });
 
 // [PROFILE] Profile view page
@@ -105,7 +112,6 @@ app.get("/users/:user_id", (req, res) => {
 
 // [LOGIN] login post
 app.post("/login", (req, res) => {
-  console.log(req.body.username);
   res.cookie('cookieName', req.body.username);
   res.redirect("/");
 });
@@ -173,17 +179,31 @@ app.post("/maps/:mapId/points", (req, res) => {
     });
 });
 
-// [add favourite]
+// [ADD FAVOURITE]
 app.post("/maps/:map_id/favourites/new", (req, res) => {
   let userId = req.cookies.cookieName;
-  console.log('TESTING USERID:', userId);
   let mapId = req.params.map_id;
-  console.log('TESTING MAPID:', mapId);
-  knex('favourites')
-    .insert({user_id: userId, map_id: mapId})
-    .then(function(){
-      // res.redirect('/');
-    });
+
+  if (!userId) {
+    res.redirect('/login');
+  } else {
+    knex
+      .select('map_id')
+      .from('favourites')
+      .where('map_id', mapId)
+      .where('user_id', userId)
+      .then(function(data){
+        if (Object.keys(data).length === 0) {
+          knex('favourites')
+            .insert({user_id: userId, map_id: mapId})
+            .then(function(){
+              res.redirect(`/users/${userId}`);
+            });
+        } else {
+          res.redirect(`/users/${userId}`);
+        }
+      });
+  }
 });
 
 //********************************* PORT LISTENING ************************************/
