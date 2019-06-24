@@ -36,7 +36,7 @@ main {
   width: 200px;
 }
 
-#edit_button { 
+#edit_button {
   justify-content: flex-end;
   width: 100%;
   text-align: center;
@@ -50,11 +50,16 @@ main {
 .indiv_point {
   display: flex;
   justify-content: space-between;
-  border: solid 0.06em rgb(95, 94, 94);
+  border: solid 0.1em rgb(95, 94, 94);
   border-radius: 0.1em;
   margin: 0.2em;
   height: 10rem;
 }
+
+.indiv_point:hover {
+  background: rgb(214, 240, 248);
+}
+
 .points_info{
   width: 100%;
   display: flex;

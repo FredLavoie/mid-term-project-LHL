@@ -77,19 +77,22 @@ function initMap(data, mapNum) {
   let center = centerOfMap(data, mapNum);
 
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10,
+    zoom: 11,
     center: center
   });
+
   for (let point of data) {
     if(point.map_id == mapNum) {
       let tempPosition = {lat: point.latitude, lng: point.longitude};
-      let marker = new google.maps.Marker({
+      marker = new google.maps.Marker({
         position: tempPosition,
         map: map
       });
     }
   }
+
 }
+
 // function to find center of map based on average from points
 function centerOfMap(points, mapNum) {
   let totalLat = 0;
