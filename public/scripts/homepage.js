@@ -1,9 +1,10 @@
 //***************************** DOCUMENT READY ********************************/
 //*****************************************************************************/
 
-$(document).ready(function() {
+$(document).ready(function(event) {
 
   loadMapName();
+  event.preventDefault();
 
 });
 
@@ -16,6 +17,7 @@ function renderMapName(mapNames) {
     // console.log("mapkey is: ", mapKey);
     // console.log('This is the map id for the point: ' + mapKey.title);
     let returnedPoint = createMapElement(mapKey.title, mapKey.id);
+    // event.preventDefault();
     $('#map_container').prepend(returnedPoint);
 
   }
@@ -34,20 +36,22 @@ function createMapElement(title, id) {
   // create all tags to be appended and assign the values where needed
   let $article = $('<article>').addClass('mapFav');
   let $button = $('<a>').attr('href', `/maps/${idOfMap}`).attr('role', 'button')
-  .addClass('btn btn-primary btn-lg btn-block').attr('id','mapTitle').text(titleOfMap);
+    .addClass('btn btn-primary btn-lg btn-block').attr('id','mapTitle').text(titleOfMap);
+  let $favButton = $('<button>').attr('type', 'submit').addClass('btn btn-default');
+  let $addSpan = $('<span>').addClass("glyphicon glyphicon-heart");
+  let $form = $('<form>').attr('method', 'POST').attr('action', `/maps/${idOfMap}/favourites/new`);
 
-  let $favButton = $('<button>').attr('type', 'button').addClass('btn btn-default btn-sm');
-  let $addSpan = $('<span>').addClass("glyphicon glyphicon-star")
-  
   $favButton.append($addSpan).text('Favourite');
 
+  $form.append($favButton);
+
   $article
-        .append($button)
-        .append($favButton);
+    .append($button)
+    .append($form);
 
   //<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-star"></span> Favorite</button>
 
-    
+
   return $article;
 }
 

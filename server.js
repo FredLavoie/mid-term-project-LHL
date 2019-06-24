@@ -37,6 +37,7 @@ app.use(
 const usersRoutes = require("./routes/users");
 const pointsRoutes = require("./routes/points");
 const mapsRoutes = require("./routes/maps");
+const favouritesRoutes = require("./routes/favourites");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -55,6 +56,8 @@ app.use(express.static("public"));
 app.use("/users", usersRoutes(knex));
 app.use("/points", pointsRoutes(knex));
 app.use("/maps", mapsRoutes(knex));
+app.use("/favourites", favouritesRoutes(knex));
+
 
 //*********************************** GET REQUESTS ************************************/
 //*************************************************************************************/
@@ -167,6 +170,19 @@ app.post("/maps/:mapId/points", (req, res) => {
     })
     .then(function() {
       res.redirect(`/maps/${pointMapId}`);
+    });
+});
+
+// [add favourite]
+app.post("/maps/:map_id/favourites/new", (req, res) => {
+  let userId = req.cookies.cookieName;
+  console.log('TESTING USERID:', userId);
+  let mapId = req.params.map_id;
+  console.log('TESTING MAPID:', mapId);
+  knex('favourites')
+    .insert({user_id: userId, map_id: mapId})
+    .then(function(){
+      // res.redirect('/');
     });
 });
 
