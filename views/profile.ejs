@@ -22,12 +22,13 @@
     </nav>
 
     <main id="profile_container">
+      <h4>Logged in as: <br> <%= users[0].name %></h4>
 
       <div id="favourites">
         <h3>My Favourite Maps</h3>
         <ul>
           <% favourites.forEach(function(item) { %>
-            <li><%= item.title %></li>
+            <li><a href="/maps/<%=item.mapId%>"><%= item.title %></a></li>
           <% }); %>
         </ul>
       </div>
@@ -36,11 +37,12 @@
         <h3>Maps I Contributed To</h3>
         <ul>
           <% contributions.forEach(function(item) { %>
-            <li><%= item.title %></li>
+            <li><a href="/maps/<%=item.mapId%>"><%= item.title %> / <%= item.pointTitle %></a></li>
           <% }); %>
         </ul>
       </div>
 
     </main>
+
   </body>
 </html>
