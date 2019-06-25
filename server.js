@@ -210,6 +210,6 @@ app.post("/maps/:map_id/favourites/new", (req, res) => {
 //*************************************************************************************/
 
 app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
+  console.log("Wiki Maps listening on port " + PORT);
 });
 

@@ -25,8 +25,7 @@
   <main>
     <form method="POST" action="/points/<%= id %>/update">
       <div class="point_form">
-        <input id="map-name" name="title" class="form-control form-control-lg" type="text" value="<%= title %>">
-        <small  class="form-text text-muted">Enter amazing points of interest!</small>
+        <input id="map-name" name="title" class="form-control form-control-lg form-pad" type="text" value="<%= title %>">
 
         <div class="form-group">
           <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="5"><%= description %></textarea>
@@ -36,10 +35,10 @@
 
         <div class="form-row">
           <div class="col">
-            <input name="latitude"type="text" class="form-control" value="<%= latitude %>">
+            <input name="latitude"type="text" class="form-control form-pad" value="<%= latitude %>">
           </div>
           <div class="col">
-            <input name="longitude"type="text" class="form-control" value="<%= longitude %>">
+            <input name="longitude"type="text" class="form-control form-pad" value="<%= longitude %>">
           </div>
         </div>
       </div>
