@@ -28,10 +28,8 @@ The server is built using [node.js](https://nodejs.org) and [express](https://ex
 2. Update the .env file with your correct local information (DB_USER & DB_PASS)
 3. Install dependencies: `npm install`
 4. Fix to binaries for sass: `npm rebuild node-sass`
-5. Run migrations: `npm run knex migrate:latest`
-  - Check the migrations folder to see what gets created in the database
-6. Run the seed: `npm run knex seed:run`
-  - Check the seeds file to see what gets seeded in the database
+5. Run migrations: `npm run knex migrate:latest`. Check the migrations folder to see what gets created in the database
+6. Run the seed: `npm run knex seed:run`. Check the seeds file to see what gets seeded in the database
 7. Run the server: `npm run local`
 8. Visit `http://localhost:8080/`
 
