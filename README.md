@@ -20,7 +20,7 @@ The server is built using [node.js](https://nodejs.org) and [express](https://ex
 <img src="./docs/edit_view.png" width="800">
 
 ### Profile View
-<img src="./docs/profile_view.png" width="800">
+<img src="./docs/profile_page.png" width="800">
 
 
 ## Getting Started
